@@ -1,0 +1,11 @@
+server:
+  port: 8181
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongodb:mongodb@mongodb.server.k8scloud.site:27017/mongodb?authMechanism=PLAIN&authSource=$external&ssl=true&retryWrites=false&loadBalanced=true
+      database: mongodb
+logging:
+  level:
+    root: info
+    org.springframework.data.mongodb.core: debug
