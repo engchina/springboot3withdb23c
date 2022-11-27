@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department</title>
+</head>
+<body>
+<h1>Department:</h1>
+<form method="POST" th:object="${department}">
+    <h3>Department ID</h3>
+    <input type="text" th:field="*{departmentId}"/>
+    <span th:if="${#fields.hasErrors('departmentId')}"
+          th:errors="*{departmentId}">Department ID Error</span>
+    <br/>
+    <h3>Department Name</h3>
+    <input type="text" th:field="*{departmentName}"/>
+    <span th:if="${#fields.hasErrors('departmentName')}"
+          th:errors="*{departmentName}">Department Name Error</span>
+    <br/>
+    <button>Submit</button>
+</form>
+</body>
+</html>
