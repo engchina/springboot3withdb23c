@@ -1,16 +1,15 @@
 package com.oracle.db23c.controller;
 
-import com.oracle.db23c.model.Station;
 import com.oracle.db23c.repository.StationRepository;
 import com.oracle.db23c.repository.StatusRepository;
 import jakarta.annotation.Resource;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RepositoryRestController
 //@RestController
