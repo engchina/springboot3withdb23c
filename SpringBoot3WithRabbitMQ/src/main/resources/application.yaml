@@ -1,0 +1,24 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: springboot3withdb23c
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    template:
+      routing-key: employee.queue
+      default-receive-queue: employee.queue
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: info
+    com:
+      oracle:
+        db23c: info
