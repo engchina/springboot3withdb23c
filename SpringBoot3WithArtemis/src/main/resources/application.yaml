@@ -1,0 +1,20 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: springboot3withdb23c
+  artemis:
+    broker-url: tcp://192.168.31.45:61616
+    user: artemis
+    password: artemis
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: info
+    com:
+      oracle:
+        db23c: info

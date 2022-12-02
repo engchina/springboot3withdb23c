@@ -25,9 +25,11 @@ hs_err_pid*
 /chapter1_bak
 /chapter2_bak
 /OracleDatabaseWithAPIJson
+/SpringBoot3AuthorizationServer
 .idea
 
 HR-ERD.png
 **/target
 *bak
+
 
