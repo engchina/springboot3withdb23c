@@ -1,0 +1,29 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: springboot3withdb23c
+  kafka:
+    bootstrap-servers:
+    - 0.0.0.0:9092
+    template:
+      default-topic: employee.topic
+    producer:
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: mygroupid
+      max-poll-records: 20
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: info
+    com:
+      oracle:
+        db23c: info
