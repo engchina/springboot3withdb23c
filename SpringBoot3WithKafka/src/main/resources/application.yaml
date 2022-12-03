@@ -5,17 +5,20 @@ spring:
     name: springboot3withdb23c
   kafka:
     bootstrap-servers:
-    - 0.0.0.0:9092
+      - 192.168.31.45:9092
     template:
       default-topic: employee.topic
     producer:
-      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      group-id: mygroupid
-      max-poll-records: 20
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.oracle.db23c.po
 management:
   endpoints:
     web:

@@ -20,7 +20,7 @@ docker run -d --name kafka-server \
     --network app-tier \
     -e ALLOW_PLAINTEXT_LISTENER=yes \
     -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092 \
-    -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-server:9092 \
+    -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://192.168.31.45:9092 \
     -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181 \
     --hostname kafka-server \
     -p 9092:9092 \

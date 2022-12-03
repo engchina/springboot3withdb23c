@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class EmployeeListener {
 
-    @KafkaListener(topics = "employee.topic")
+
+    @KafkaListener(topics = "employee.topic", groupId = "mygroup")
     public void receiveEmployee(Employee employee) {
         log.info("### in EmployeeListener.receiveEmployee() ###");
         log.info(employee.toString());
