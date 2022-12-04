@@ -1,3 +1,11 @@
+# Customize with Oracle Database 23c(beta)
+
+View swagger.yaml as html
+```shell
+https://editor-next.swagger.io/
+```
+
+
 # Bookinfo Sample
 
 See <https://istio.io/docs/examples/bookinfo/>.
@@ -7,7 +15,6 @@ See <https://istio.io/docs/examples/bookinfo/>.
 ## Build docker images
 
 ```bash
-cd samples/bookinfo
 src/build-services.sh <version> <prefix>
 ```
 
@@ -16,7 +23,11 @@ Where `<version>` is the tag and `<prefix>` is the docker registry to tag the im
 For example:
 
 ```bash
-$ src/build-services.sh 1.16.3 docker.io/shamsher31
+# if using docker
+# $ src/build-services.sh 23.0.0 docker.io/engchina
+
+# if using podman
+$ src/build-services-podman.sh 23.0.0 docker.io/engchina
 Sending build context to Docker daemon  1.218MB
 Step 1/16 : FROM python:3.7.7-slim
 3.7.7-slim: Pulling from library/python
@@ -42,7 +53,7 @@ Run the following script to build the docker images, push them to docker hub, an
 For example:
 
 ```bash
-$ ./build_push_update_images.sh 1.16.3 --prefix=shamsher31
+$ ./build_push_update_images.sh 23.0.0 --prefix=engchina
 ...
 1.16.3: digest: sha256:70634d3847a190b9826975c8 size: 3883
 Pushing: shamsher31/examples-bookinfo-reviews-v2:1.16.3
