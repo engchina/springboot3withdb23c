@@ -53,7 +53,7 @@ Run the following script to build the docker images, push them to docker hub, an
 For example:
 
 ```bash
-$ ./build_push_update_images.sh 23.0.0 --prefix=engchina
+$ ./build_push_update_images.sh 23.0.0 --prefix=docker.io/engchina
 ...
 1.16.3: digest: sha256:70634d3847a190b9826975c8 size: 3883
 Pushing: shamsher31/examples-bookinfo-reviews-v2:1.16.3
