@@ -1,10 +1,14 @@
 # Customize with Oracle Database 23c(beta)
 
 View swagger.yaml as html
-```shell
+```
 https://editor-next.swagger.io/
 ```
 
+Deploy Bookinfo sample application
+```
+kubectl apply -f platform/kube/bookinfo.yaml
+```
 
 # Bookinfo Sample
 

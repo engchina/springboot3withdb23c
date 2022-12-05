@@ -103,7 +103,7 @@ dispatcher.onGet(/^\/ratings\/[0-9]*/, function (req, res) {
         port: portNumber,
         user: username,
         password: password,
-        database: 'test'
+        database: 'pdbadmin'
       })
 
       connection.connect(function(err) {
@@ -145,7 +145,7 @@ dispatcher.onGet(/^\/ratings\/[0-9]*/, function (req, res) {
           res.end(JSON.stringify({error: 'could not connect to ratings database'}))
           console.log(err)
         } else {
-          const db = client.db("test")
+          const db = client.db("pdbadmin")
           db.collection('ratings').find({}).toArray(function (err, data) {
             if (err) {
               res.writeHead(500, {'Content-type': 'application/json'})

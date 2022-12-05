@@ -36,6 +36,10 @@ spec:
         app: ratings
         version: v2
     spec:
+      hostAliases:
+      - hostnames: 
+        - mongodb.db23c.site
+        ip: 192.168.56.23
       serviceAccountName: bookinfo-ratings-v2
       containers:
       - name: ratings
@@ -57,9 +61,17 @@ spec:
           # - name: MYSQL_DB_PASSWORD
           #  value: password
           - name: MONGO_DB_URL
-            value: mongodb://mongodb:27017/test
+            value: mongodb://pdbadmin:oracle@mongodb.db23c.site:27017/pdbadmin?authMechanism=PLAIN&authSource=\$external&ssl=true&retryWrites=false&loadBalanced=true&tlsCAFile=/u01/app/ords/certs/ca.crt
         ports:
         - containerPort: 9080
         securityContext:
           runAsUser: 1000
+        volumeMounts:
+        - name: customized-ca
+          mountPath: /u01/app/ords/certs
+          readOnly: true
+      volumes:
+      - name: customized-ca
+        secret: 
+          secretName: customized-ca
 ---
