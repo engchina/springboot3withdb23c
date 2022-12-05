@@ -9,12 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.oracle</groupId>
-    <artifactId>SpringBoot3WithKafka</artifactId>
+    <artifactId>SpringBoot3WithAdmin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringBoot3WithKafka</name>
-    <description>SpringBoot3WithKafka</description>
+    <name>SpringBoot3WithAdmin</name>
+    <description>SpringBoot3WithAdmin</description>
     <properties>
         <java.version>17</java.version>
+        <spring-boot-admin.version>3.0.0-M4</spring-boot-admin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -26,8 +27,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
 
         <dependency>
@@ -51,12 +56,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <finalName>springboot3withdb23c</finalName>

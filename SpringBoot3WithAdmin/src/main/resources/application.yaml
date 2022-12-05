@@ -1,0 +1,21 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: springboot3withdb23clien
+  boot:
+    admin:
+      client:
+        enabled: true
+        url: http://localhost:8188
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: info
+    com:
+      oracle:
+        db23c: info
