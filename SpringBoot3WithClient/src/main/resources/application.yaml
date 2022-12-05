@@ -1,13 +1,14 @@
 server:
-  port: 8188
+  port: 8189
 spring:
   application:
     name: springboot3withdb23
-  security:
-    user:
-      name: admin
-      password: oracle
-      roles: ADMIN
+  boot:
+    admin:
+      client:
+        url: http://localhost:8188
+        username: admin
+        password: oracle
 management:
   endpoints:
     web:
