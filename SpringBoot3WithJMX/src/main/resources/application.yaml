@@ -1,0 +1,21 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: springboot3withdb23
+  jmx:
+    enabled: true
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: info
+    com:
+      oracle:
+        db23c: info
