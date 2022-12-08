@@ -47,7 +47,7 @@ func main() {
 		}
 	}()
 
-	rows, err := stmt.Query("ap-tokyo-1") //输入sql中对应参数的值
+	rows, err := stmt.Query("ap-tokyo-1") // 输入sql中对应参数的值
 	if err != nil {
 		panic(fmt.Errorf("error in stmt.Query: %w", err))
 	}
@@ -65,7 +65,7 @@ func main() {
 	}
 	fmt.Print("\n")
 
-	//构造切片存储json
+	// 构造切片存储json
 	var slice []map[string]interface{}
 	var m map[string]interface{}
 	m = make(map[string]interface{})
@@ -76,11 +76,11 @@ func main() {
 		if err != nil {
 			panic(fmt.Errorf("error in rows.Scan: %w", err))
 		}
-		//写入查询数据集的所有列名称
+		// 写入查询数据集的所有列名称
 		fmt.Printf("REGION_ID is %s, REGION_NAME is %s\n", RegionId, RegionName)
 		m["REGION_ID"] = RegionId
 		m["REGION_NAME"] = RegionName
-		slice = append(slice, m) //分片中追加信息
+		slice = append(slice, m) // 分片中追加信息
 	}
 	if err = rows.Err(); err != nil {
 		panic(fmt.Errorf("error in rows.Err: %w", err))
@@ -90,7 +90,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("序列化错误 err = %v\n", err)
 	} else {
-		//输出序列化后的结果 json字符串
+		// 输出序列化后的结果 json字符串
 		fmt.Printf("序列化后 = %v\n", string(data))
 	}
 }
