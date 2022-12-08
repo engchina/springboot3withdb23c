@@ -83,10 +83,7 @@ def fetch_details_from_ords_service(isbn, id, headers)
     http = Net::HTTP.new(uri.host, 8181)
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     http.read_timeout = 5 # seconds
-
-    unless ENV['DO_NOT_ENCRYPT'] === 'true' then
-      http.use_ssl = true
-    end
+    http.use_ssl = true
 
     request = Net::HTTP::Get.new(uri.request_uri)
     headers.each { |header, value| request[header] = value }
