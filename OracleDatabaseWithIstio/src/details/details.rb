@@ -78,7 +78,8 @@ def get_book_details(id, headers)
 end
 
 def fetch_details_from_external_service(isbn, id, headers)
-    uri = URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+    # uri = URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+    uri = URI.parse('https://192.168.56.23:8181/ords/pdbadmin/soda/latest/details_dv/FB038000')
     http = Net::HTTP.new(uri.host, ENV['DO_NOT_ENCRYPT'] === 'true' ? 80:443)
     http.read_timeout = 5 # seconds
 
@@ -98,24 +99,37 @@ def fetch_details_from_external_service(isbn, id, headers)
     response = http.request(request)
 
     json = JSON.parse(response.body)
-    book = json['items'][0]['volumeInfo']
+    # book = json['items'][0]['volumeInfo']
+    book = json
 
-    language = book['language'] === 'en'? 'English' : 'unknown'
-    type = book['printType'] === 'BOOK'? 'paperback' : 'unknown'
-    isbn10 = get_isbn(book, 'ISBN_10')
-    isbn13 = get_isbn(book, 'ISBN_13')
+    # language = book['language'] === 'en'? 'English' : 'unknown'
+    # type = book['printType'] === 'BOOK'? 'paperback' : 'unknown'
+    # isbn10 = get_isbn(book, 'ISBN_10')
+    # isbn13 = get_isbn(book, 'ISBN_13')
 
-    return {
-        'id' => id,
-        'author': book['authors'][0],
-        'year': book['publishedDate'],
-        'type' => type,
-        'pages' => book['pageCount'],
-        'publisher' => book['publisher'],
-        'language' => language,
-        'ISBN-10' => isbn10,
-        'ISBN-13' => isbn13
-  }
+  #   return {
+  #       'id' => id,
+  #       'author': book['authors'][0],
+  #       'year': book['publishedDate'],
+  #       'type' => type,
+  #       'pages' => book['pageCount'],
+  #       'publisher' => book['publisher'],
+  #       'language' => language,
+  #       'ISBN-10' => isbn10,
+  #       'ISBN-13' => isbn13
+  # }
+
+  return {
+    'id' => id,
+    'author': book['author'],
+    'year': book['year'],
+    'type' => book['type'],
+    'pages' => book['pages'],
+    'publisher' => book['publisher'],
+    'language' => book['language'],
+    'ISBN-10' => book['isbn10'],
+    'ISBN-13' => book['isbn13']
+}
 
 end
 

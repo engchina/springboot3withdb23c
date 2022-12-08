@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: mymongodb
+spec:
+  hosts:
+  - mongodb.db23c.site
+  ports:
+  - number: 27017
+    name: mongodb
+    protocol: MONGO
+  location: MESH_EXTERNAL
+  resolution: DNS
