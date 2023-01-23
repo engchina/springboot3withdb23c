@@ -371,6 +371,9 @@
       "pattern":"\\Qorg/springframework/boot/sql/init/dependency/DatabaseInitializationDependencyConfigurer.class\\E"
     }, 
     {
+      "pattern":"\\Qorg/springframework/boot/web/server/mime-mappings.properties\\E"
+    }, 
+    {
       "pattern":"\\Qorg/springframework/cache/annotation/AbstractCachingConfiguration$CachingConfigurerSupplier.class\\E"
     }, 
     {

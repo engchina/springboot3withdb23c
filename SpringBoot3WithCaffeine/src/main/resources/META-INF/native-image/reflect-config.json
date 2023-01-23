@@ -30,6 +30,9 @@
   "name":"[Ljava.lang.String;"
 },
 {
+  "name":"[Ljava.lang.annotation.Annotation;"
+},
+{
   "name":"[Ljava.lang.constant.Constable;"
 },
 {
@@ -261,33 +264,12 @@
   "name":"com.oracle.db23c.springboot3withcaffeine.config.CacheConfig",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"cacheManager","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine"] }, 
-    {"name":"caffeineConfig","parameterTypes":[] }
-  ]
-},
-{
-  "name":"com.oracle.db23c.springboot3withcaffeine.config.CacheConfig$$SpringCGLIB$$0",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
   "queryAllDeclaredConstructors":true,
-  "fields":[{"name":"CGLIB$FACTORY_DATA"}],
   "methods":[
     {"name":"<init>","parameterTypes":[] }, 
-    {"name":"CGLIB$SET_STATIC_CALLBACKS","parameterTypes":["org.springframework.cglib.proxy.Callback[]"] }, 
-    {"name":"CGLIB$SET_THREAD_CALLBACKS","parameterTypes":["org.springframework.cglib.proxy.Callback[]"] }, 
     {"name":"cacheManager","parameterTypes":["com.github.benmanes.caffeine.cache.Caffeine"] }, 
     {"name":"caffeineConfig","parameterTypes":[] }
   ]
-},
-{
-  "name":"com.oracle.db23c.springboot3withcaffeine.config.CacheConfig$$SpringCGLIB$$1",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Class"] }]
-},
-{
-  "name":"com.oracle.db23c.springboot3withcaffeine.config.CacheConfig$$SpringCGLIB$$2",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Class"] }]
 },
 {
   "name":"com.oracle.db23c.springboot3withcaffeine.controller.MainController",
@@ -411,6 +393,14 @@
   "methods":[{"name":"defineClass","parameterTypes":["java.lang.String","byte[]","int","int","java.security.ProtectionDomain"] }]
 },
 {
+  "name":"java.lang.Cloneable",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.lang.Comparable",
+  "queryAllDeclaredMethods":true
+},
+{
   "name":"java.lang.Iterable",
   "queryAllDeclaredMethods":true,
   "queryAllPublicMethods":true,
@@ -529,6 +519,12 @@
 },
 {
   "name":"java.util.ArrayList"
+},
+{
+  "name":"java.util.Date",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true
 },
 {
   "name":"java.util.Enumeration"
@@ -710,6 +706,18 @@
 {
   "name":"org.springframework.aop.PointcutAdvisor",
   "queryAllPublicMethods":true
+},
+{
+  "name":"org.springframework.aop.SpringProxy",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.springframework.aop.TargetClassAware",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.springframework.aop.framework.Advised",
+  "queryAllDeclaredMethods":true
 },
 {
   "name":"org.springframework.aop.framework.AopInfrastructureBean",
@@ -1670,7 +1678,8 @@
 {
   "name":"org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController",
   "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"error","parameterTypes":["jakarta.servlet.http.HttpServletRequest"] }]
 },
 {
   "name":"org.springframework.boot.autoconfigure.web.servlet.error.DefaultErrorViewResolver",
@@ -2415,6 +2424,15 @@
 },
 {
   "name":"org.springframework.cache.jcache.config.ProxyJCacheConfiguration"
+},
+{
+  "name":"org.springframework.cglib.proxy.Dispatcher"
+},
+{
+  "name":"org.springframework.cglib.proxy.MethodInterceptor"
+},
+{
+  "name":"org.springframework.cglib.proxy.NoOp"
 },
 {
   "name":"org.springframework.context.ApplicationContextAware",
