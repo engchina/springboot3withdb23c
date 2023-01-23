@@ -11,3 +11,17 @@ spec:
     protocol: MONGO
   location: MESH_EXTERNAL
   resolution: DNS
+---
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: myords
+spec:
+  hosts:
+  - ords.db23c.site
+  ports:
+  - number: 8181
+    name: ords
+    protocol: tcp
+  location: MESH_EXTERNAL
+  resolution: DNS

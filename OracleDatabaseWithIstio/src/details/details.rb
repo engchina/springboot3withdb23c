@@ -61,8 +61,14 @@ def get_book_details(id, headers)
     #   # the ISBN of one of Comedy of Errors on the Amazon
     #   # that has Shakespeare as the single author
         isbn = '0486424618'
+<<<<<<< HEAD
         return fetch_details_from_external_service(isbn, id, headers)
     # end
+=======
+        # return fetch_details_from_external_service(isbn, id, headers)
+        return fetch_details_from_ords_service(isbn, id, headers)
+    end
+>>>>>>> 05ed6193587861573d095cc88f59bc8c45f6ac1e
 
     return {
         'id' => id,
@@ -77,22 +83,20 @@ def get_book_details(id, headers)
     }
 end
 
+<<<<<<< HEAD
 def fetch_details_from_external_service(isbn, id, headers)
     # uri = URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
     uri = URI.parse('https://192.168.56.23:8181/ords/pdbadmin/soda/latest/details_dv/FB038000')
     # http = Net::HTTP.new(uri.host, ENV['DO_NOT_ENCRYPT'] === 'true' ? 80:443)
     http = Net::HTTP.new(uri.host, ENV['DO_NOT_ENCRYPT'] === 'true' ? 80:443)
+=======
+def fetch_details_from_ords_service(isbn, id, headers)
+    uri = URI.parse('https://ords.db23c.site/ords/pdbadmin/soda/latest/details_dv/FB038000')
+    http = Net::HTTP.new(uri.host, 8181)
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+>>>>>>> 05ed6193587861573d095cc88f59bc8c45f6ac1e
     http.read_timeout = 5 # seconds
-
-    # DO_NOT_ENCRYPT is used to configure the details service to use either
-    # HTTP (true) or HTTPS (false, default) when calling the external service to
-    # retrieve the book information.
-    #
-    # Unless this environment variable is set to true, the app will use TLS (HTTPS)
-    # to access external services.
-    unless ENV['DO_NOT_ENCRYPT'] === 'true' then
-      http.use_ssl = true
-    end
+    http.use_ssl = true
 
     request = Net::HTTP::Get.new(uri.request_uri)
     headers.each { |header, value| request[header] = value }
@@ -100,30 +104,12 @@ def fetch_details_from_external_service(isbn, id, headers)
     response = http.request(request)
 
     json = JSON.parse(response.body)
-    # book = json['items'][0]['volumeInfo']
     book = json
 
-    # language = book['language'] === 'en'? 'English' : 'unknown'
-    # type = book['printType'] === 'BOOK'? 'paperback' : 'unknown'
-    # isbn10 = get_isbn(book, 'ISBN_10')
-    # isbn13 = get_isbn(book, 'ISBN_13')
-
-  #   return {
-  #       'id' => id,
-  #       'author': book['authors'][0],
-  #       'year': book['publishedDate'],
-  #       'type' => type,
-  #       'pages' => book['pageCount'],
-  #       'publisher' => book['publisher'],
-  #       'language' => language,
-  #       'ISBN-10' => isbn10,
-  #       'ISBN-13' => isbn13
-  # }
-
-  return {
+   return {
     'id' => id,
-    'author': book['author'],
-    'year': book['year'],
+    'author' => book['author'],
+    'year' => book['year'],
     'type' => book['type'],
     'pages' => book['pages'],
     'publisher' => book['publisher'],
@@ -131,7 +117,47 @@ def fetch_details_from_external_service(isbn, id, headers)
     'ISBN-10' => book['isbn10'],
     'ISBN-13' => book['isbn13']
 }
+end
 
+def fetch_details_from_external_service(isbn, id, headers)
+  uri = URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+  http = Net::HTTP.new(uri.host, ENV['DO_NOT_ENCRYPT'] === 'true' ? 80:443)
+  http.read_timeout = 5 # seconds
+
+  # DO_NOT_ENCRYPT is used to configure the details service to use either
+  # HTTP (true) or HTTPS (false, default) when calling the external service to
+  # retrieve the book information.
+  #
+  # Unless this environment variable is set to true, the app will use TLS (HTTPS)
+  # to access external services.
+  unless ENV['DO_NOT_ENCRYPT'] === 'true' then
+    http.use_ssl = true
+  end
+
+  request = Net::HTTP::Get.new(uri.request_uri)
+  headers.each { |header, value| request[header] = value }
+
+  response = http.request(request)
+
+  json = JSON.parse(response.body)
+  book = json['items'][0]['volumeInfo']
+
+  language = book['language'] === 'en'? 'English' : 'unknown'
+  type = book['printType'] === 'BOOK'? 'paperback' : 'unknown'
+  isbn10 = get_isbn(book, 'ISBN_10')
+  isbn13 = get_isbn(book, 'ISBN_13')
+
+  return {
+      'id' => id,
+      'author': book['authors'][0],
+      'year': book['publishedDate'],
+      'type' => type,
+      'pages' => book['pageCount'],
+      'publisher' => book['publisher'],
+      'language' => language,
+      'ISBN-10' => isbn10,
+      'ISBN-13' => isbn13
+}
 end
 
 def get_isbn(book, isbn_type)

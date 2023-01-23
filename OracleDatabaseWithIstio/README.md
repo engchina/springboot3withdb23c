@@ -10,6 +10,15 @@ Deploy Bookinfo sample application
 kubectl apply -f platform/kube/bookinfo.yaml
 ```
 
+```
+kubectl -n kube-system edit cm coredns
+
+        hosts {
+           192.168.56.23 mongodb.db23c.site ords.db23c.site
+           fallthrough
+        }
+```
+
 # Bookinfo Sample
 
 See <https://istio.io/docs/examples/bookinfo/>.
