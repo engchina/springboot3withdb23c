@@ -57,12 +57,12 @@ end
 
 # TODO: provide details on different books.
 def get_book_details(id, headers)
-    if ENV['ENABLE_EXTERNAL_BOOK_SERVICE'] === 'true' then
-      # the ISBN of one of Comedy of Errors on the Amazon
-      # that has Shakespeare as the single author
+    # if ENV['ENABLE_EXTERNAL_BOOK_SERVICE'] === 'true' then
+    #   # the ISBN of one of Comedy of Errors on the Amazon
+    #   # that has Shakespeare as the single author
         isbn = '0486424618'
         return fetch_details_from_external_service(isbn, id, headers)
-    end
+    # end
 
     return {
         'id' => id,
@@ -80,6 +80,7 @@ end
 def fetch_details_from_external_service(isbn, id, headers)
     # uri = URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
     uri = URI.parse('https://192.168.56.23:8181/ords/pdbadmin/soda/latest/details_dv/FB038000')
+    # http = Net::HTTP.new(uri.host, ENV['DO_NOT_ENCRYPT'] === 'true' ? 80:443)
     http = Net::HTTP.new(uri.host, ENV['DO_NOT_ENCRYPT'] === 'true' ? 80:443)
     http.read_timeout = 5 # seconds
 
