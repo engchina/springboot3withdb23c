@@ -15,6 +15,10 @@
 	<description>SpringBoot3WithNativeImage</description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.souceEncoding>UTF-8</project.build.souceEncoding>
+		<spring-boot.build-image.imageName>springboot3withnativeimage</spring-boot.build-image.imageName>
 	</properties>
 	<dependencies>
 		<dependency>
