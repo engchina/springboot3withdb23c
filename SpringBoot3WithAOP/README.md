@@ -23,5 +23,5 @@ java \
 ```
 
 ```shell
-docker run --rm -p 8080:8080 springboot3withcaffeine:latest
+docker run --rm -p 8080:8080 springboot3withaop:latest
 ```
