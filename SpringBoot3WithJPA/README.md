@@ -1,6 +1,6 @@
 ### Generate Binary Executable File
 ```shell
-./mvnw -Pnative native:compile
+./mvnw -Pnative clean native:compile
 ```
 
 ```shell
