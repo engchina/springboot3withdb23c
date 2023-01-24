@@ -32,4 +32,8 @@ HR-ERD.png
 **/target
 *bak
 
+### Node.js ###
+**/node
+**/node_modules
+**/.parcel-cache
 
